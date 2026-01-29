@@ -57,10 +57,6 @@ bool MathematicalExpressionCharacterValidity(const char *BUFFER)//Checking if on
     //for(size_t i = 0; i<SIZE; i++)
     while(BUFFER[i]!='\0')
     {
-        if(BUFFER[i]=='\0')
-        {
-            break;
-        }
         if(strchr(ACCEPTED_SYMBOLS_MATHEMATICS,BUFFER[i])==NULL)
         {
             return false;

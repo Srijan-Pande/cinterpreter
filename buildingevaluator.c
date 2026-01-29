@@ -12,7 +12,7 @@
 int UserInputPutInBuffer(char *BUFFER, size_t SIZE)
 {
     printf(">>> ");
-    if(fgets(BUFFER,SIZE,stdin)==NULL)//Take user input into the buffer
+    if(fgets(BUFFER,SIZE,stdin)==nullptr)//Take user input into the buffer
         {
             if(feof(stdin))
             {
@@ -51,17 +51,12 @@ const char* ACCEPTED_SYMBOLS_MATHEMATICS = "1234567890()^/*+- ";//if the user wa
 bool MathematicalExpressionCharacterValidity(const char *BUFFER)//Checking if only mathemtical symbols specified in ACCEPTED_SYMBOLS_MATHEMATICS are present in the user input
 //Implement a Lookup Table later on
 {
-    if(BUFFER==NULL)return false;
+    if(BUFFER==nullptr)return false;
 
     size_t i = 0;
-    //for(size_t i = 0; i<SIZE; i++)
     while(BUFFER[i]!='\0')
     {
-        if(BUFFER[i]=='\0')
-        {
-            break;
-        }
-        if(strchr(ACCEPTED_SYMBOLS_MATHEMATICS,BUFFER[i])==NULL)
+        if(strchr(ACCEPTED_SYMBOLS_MATHEMATICS,BUFFER[i])==nullptr)
         {
             return false;
         }
@@ -72,12 +67,12 @@ bool MathematicalExpressionCharacterValidity(const char *BUFFER)//Checking if on
 
 int Evaluator(const char *BUFFER)
 {
-    if(BUFFER==NULL)return '\0';
+    if(BUFFER==nullptr)return '\0';
 }
 
 bool BracketsBalanced(const char *BUFFER) //Checking if all of the brackets are balanced in the user input
 {
-    if(BUFFER==NULL)return false;
+    if(BUFFER==nullptr)return false;
 
     size_t i = 0;
     int balance = 0;
@@ -99,6 +94,49 @@ bool BracketsBalanced(const char *BUFFER) //Checking if all of the brackets are 
     }
     return balance==0; 
     //Replace the above code with a stack to account for (),[],{} all at once
+}
+
+typedef enum 
+{
+    operator_type=0,
+    operand_type=1
+} element_type;
+
+typedef struct element
+{
+    element_type type;
+    union{
+        char operator_element;
+        float operand_element;
+    };
+    struct element* ahead;
+    struct element* behind;
+}element;
+
+element* operator_create(char C)
+{
+    element *node = (element *)malloc(sizeof(element));
+    if(node!=nullptr)
+    {
+        node->type=operator_type;
+        node->operator_element=C;
+        node->ahead=nullptr;
+        node->behind=nullptr;
+    }
+    return node;
+}
+
+element* operand_create(float F)
+{
+    element *node = (element *)malloc(sizeof(element));
+    if(node!=nullptr)
+    {
+        node->type=operand_type;
+        node->operand_element=F;
+        node->ahead=nullptr;
+        node->behind=nullptr;
+    }
+    return node;
 }
 
 int main(int argc, char *argv[])
