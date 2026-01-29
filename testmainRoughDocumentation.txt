@@ -1,0 +1,14 @@
+Functions that need to be implemented
+(x)
+x++
+x--
+++x
+--x
++x
+-x
+x^y
+x/y
+x*y
+x%y
+x+y
+x-y
