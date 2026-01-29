@@ -23,7 +23,7 @@ typedef struct element //node of Linked List
     struct element* behind;
 }element;
 
-element* operator_create(char C)//constructor for operator node
+element *operator_create(char C)//constructor for operator node
 {
     element *node = (element *)malloc(sizeof(element));
     if(node==nullptr)return nullptr;
@@ -37,7 +37,7 @@ element* operator_create(char C)//constructor for operator node
     return node;
 }
 
-element* operand_create(float F)//constructor for operand node
+element *operand_create(float F)//constructor for operand node
 {
     element *node = (element *)malloc(sizeof(element));
     if(node==nullptr)return nullptr;
@@ -107,10 +107,4 @@ void free_user_input(element* head)//deletes the entire linked list comprising t
         current=next_element;
     }
     return;
-}
-
-int main(int argc, char *argv[])
-{
-    
-    return EXIT_SUCCESS;
 }
