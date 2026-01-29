@@ -93,6 +93,7 @@ bool BracketsBalanced(const char *BUFFER) //Checking if all of the brackets are 
         i++;
     }
     return balance==0; 
+    //Replace the above code with a stack to account for (),[],{} all at once
 }
 
 int main(int argc, char *argv[])
@@ -122,9 +123,9 @@ int main(int argc, char *argv[])
             continue;
         }
         
-        if(MathematicalExpressionCharacterValidity(BUFFER)==false)
+        if(MathematicalExpressionCharacterValidity(BUFFER)==false||BracketsBalanced(BUFFER)==false)//Potential Improvement: Both conditions can be combined to be tested by one function in order to iterate only once through the BUFFER containing user input
         {
-            puts("Invalid Input for Mathematical Processing");//Improvement to be made: Write code to highlight where and why the Input is Invalid
+            puts("Invalid Input");//Improvement to be made: Write code to highlight where and why the Input is Invalid
         }
     }
     return EXIT_SUCCESS;

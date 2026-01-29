@@ -6,12 +6,12 @@
 #include<errno.h>
 #define MAXIMUM_USER_INPUT_SIZE 1024
 
-bool BracketsBalanced(const char *BUFFER, size_t SIZE)
+bool BracketsBalanced(const char *BUFFER)
 {
     if(BUFFER==NULL)return false;
     size_t i = 0;
     int balance = 0;
-    for(size_t i = 0; i<SIZE; i++)
+    while(BUFFER[i]!='\0')
     {
         if(BUFFER[i]=='(')
         {
@@ -81,9 +81,7 @@ int main(int argc, char *argv[])
     size_t test_size;
     for(size_t i = 0; i<sizeof(expected_output); i++)
     {
-        test_size = strlen(test_case[i]);
-
-        bool output = BracketsBalanced(test_case[i],test_size);
+        bool output = BracketsBalanced(test_case[i]);
         
         printf("TEST CASE %zu\ntest string: %s\ntest size: %zu\nBrackets Balanced = %s\nExpected Value = %s\nTest Case %s\n\n",
             i+1, //TEST CASE
