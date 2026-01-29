@@ -20,3 +20,9 @@ Once launched, the prompt `>>>` will appear.
 - Type a mathematical expression (e.g., `10 + 2 * 5`) and press **Enter** to get the result.
 - Type `clear` to clear the terminal.
 - Type `exit` to quit the program.
+
+## UPDATES MADE
+
+The testingmain.c file when compiled can handle work with floating point numbers, integrates operators such as ^ and % with operator precedence and associativity enforced as well as C23 safety features. 
+
+NOTE : testingmain.c requires the compiler to follow the C23 standard!
