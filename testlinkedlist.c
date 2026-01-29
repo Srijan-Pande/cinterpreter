@@ -94,7 +94,8 @@ element *free_element_with_return(element *node)
     return return_element;
 }
 
-void free_user_input(element* head)
+//REMEMBER to set head = nullptr; after using this below given function
+void free_user_input(element* head)//deletes the entire linked list comprising the user input. 
 {
     if(head==nullptr)return;
     element *current = head;
