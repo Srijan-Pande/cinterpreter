@@ -65,11 +65,6 @@ bool MathematicalExpressionCharacterValidity(const char *BUFFER)//Checking if on
     return true;
 }
 
-int Evaluator(const char *BUFFER)
-{
-    if(BUFFER==nullptr)return '\0';
-}
-
 bool BracketsBalanced(const char *BUFFER) //Checking if all of the brackets are balanced in the user input
 {
     if(BUFFER==nullptr)return false;
