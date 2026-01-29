@@ -1,0 +1,88 @@
+Libraries Used
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include "eval.h"
+#include "lexer.h"
+
+----------
+lexer.c 
+Functions Contained
+
+1. count_ops
+Input : 
+pointer to token array of type character
+size of the token array
+Output : count(+,=,*,/) i.e total number of mathematical operators are present
+Working : 
+Iterate through the token array
+Check each element, if the element is + or - or * or / then increment the count by 1
+Return the count 
+
+2. extract_numbers
+Input : 
+pointer to token array of type char
+pointer to value array of type int
+Output : size of values array i.e how many elements of the values array have been filled by the function
+Working :
+Iterate through the token array 
+Check for a digit in its ASCII form i.e '0','1','2','3','4','5','6','7','8','9'
+If the check is true, use the atoi function to convert the ASCII number we have encountered to it's integer form, store it in the values array and continue
+If the check is false, continue 
+
+3. extract_ops
+Input :
+pointer to token array of type char
+pointer to operators array of type char
+size of token array
+Output : void i.e no output 
+Working :
+Iterate through the token array 
+Check for operators namely '+','-','*','/'
+If an operator is encountered, store it in the operators array and continue
+Else continue
+----------
+
+----------
+eval.c
+Functions Contained 
+
+1. reduce_md 
+Input :
+pointer to value array of type int
+pointer to operations array of type arr 
+pointer to size of operations array of type int 
+Output : void i.e no output 
+Working :
+Reduce the multiplication and division operations due to their priority in BODMAS
+
+2. evaluate
+Input : 
+pointer to value array of type int
+pointer to operations array of type arr 
+pointer to size of operations array of type int 
+Output :
+final computed value 
+Working :
+Perform the addition and subtraction operations to obtain the final value to be returned
+----------
+
+----------
+main.c 
+FLOW OF INFORMATION
+1. Run a while loop to continually take user input 
+2. If the user input is "exit", break the loop 
+3. If the user input is "clear", clear the screen
+4. If the user input is starting/ending within single quotes, remove the single quotes and print the remaining output 
+5. If the user input is not "clear" and does not begin with ", then continue 
+6. Use count_ops from lexer.c to find out the total count of +,-,*,/ in the input
+7. Create pointers to an integer array named values as well as a character array named operators, both of which are sized one greater than the number of operations in the user input
+8. Extract the operators from user input using extract_ops found in lexer.c and place them in the operators array 
+9. Extract the numbers from user input using extract_numbers found in lexer.c and place them in the values array 
+10. Keep track of the total count of values in the user input
+11. Given that the number of operators is greater than 0, if the number of values in the user input is not one greater than the number of values in the user output, then we have an error 
+12. Use reduce_md found in eval.c and perform the multiplication and division operations 
+13. Use evaluate found in eval.c and perform the addition and subtraction operations 
+14. Output the final value found 
+----------
