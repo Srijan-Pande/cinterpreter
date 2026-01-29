@@ -111,28 +111,28 @@ typedef struct element
 element* operator_create(char C)
 {
     element *node = (element *)malloc(sizeof(element));
-    if(node!=nullptr)
+    if(node==nullptr)return nullptr;
+    *node = (element)
     {
-        node->type=operator_type;
-        node->operator_element=C;
-        node->ahead=nullptr;
-        node->behind=nullptr;
-    }
-    else return nullptr;
+        .type=operator_type,
+        .operator_element=C,
+        .ahead=nullptr,
+        .behind=nullptr
+    };
     return node;
 }
 
 element* operand_create(float F)
 {
     element *node = (element *)malloc(sizeof(element));
-    if(node!=nullptr)
+    if(node==nullptr)return nullptr;
+    *node = (element)
     {
-        node->type=operand_type;
-        node->operand_element=F;
-        node->ahead=nullptr;
-        node->behind=nullptr;
-    }
-    else return nullptr;
+        .type=operand_type,
+        .operand_element=F,
+        .ahead=nullptr,
+        .behind=nullptr
+    };
     return node;
 }
 
