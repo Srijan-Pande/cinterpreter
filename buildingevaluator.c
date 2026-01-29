@@ -118,6 +118,7 @@ element* operator_create(char C)
         node->ahead=nullptr;
         node->behind=nullptr;
     }
+    else return nullptr;
     return node;
 }
 
@@ -131,6 +132,7 @@ element* operand_create(float F)
         node->ahead=nullptr;
         node->behind=nullptr;
     }
+    else return nullptr;
     return node;
 }
 
